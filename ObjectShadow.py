@@ -16,6 +16,7 @@ sky = pygame.image.load('./assets/sky.png').convert_alpha()
 sky = pygame.transform.scale(sky, (SCREEN_WIDTH, SCREEN_HEIGHT))
 grass = pygame.image.load('./assets/grass.png').convert_alpha()
 grass = pygame.transform.scale(grass, (SCREEN_WIDTH, SCREEN_HEIGHT - 400))
+king_mask = pygame.mask.from_surface(king).outline()
 
 run = True
 while run:  # game loop
@@ -28,6 +29,7 @@ while run:  # game loop
     screen.blit(sky, (0, 0))
     screen.blit(grass, (0, 400))
     screen.blit(king, (SCREEN_WIDTH / 2, (SCREEN_HEIGHT / 2) - 20))
+    pygame.draw.polygon(screen, (0, 0, 0), king_mask)
     pygame.display.flip()
 
 pygame.quit()
